@@ -5,7 +5,7 @@ Alur per gambar (dua langkah resmi):
   1. POST /{id}/media          (image_url + media_type=STORIES)  -> id wadah
   2. GET  /{wadah}?fields=status_code  sampai FINISHED
   3. POST /{id}/media_publish  (creation_id)                     -> tayang
-Gambar yang berhasil tayang dipindah ke posted/.
+Gambar yang berhasil tayang dihapus dari queue/ (riwayat tayang ada di log run).
 
 Variabel lingkungan:
   IG_ACCESS_TOKEN  (wajib kecuali DRY_RUN=1)  token Instagram jangka panjang
@@ -30,7 +30,6 @@ IG_ID = os.environ.get("IG_USER_ID", "").strip()
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN") or "1")
 DRY_RUN = os.environ.get("DRY_RUN", "") == "1"
 QUEUE_DIR = Path(os.environ.get("QUEUE_DIR", "queue"))
-POSTED_DIR = Path(os.environ.get("POSTED_DIR", "posted"))
 EXTS = {".jpg", ".jpeg"}
 
 _repo = os.environ.get("GITHUB_REPOSITORY", "")
@@ -126,12 +125,12 @@ def main():
         return 2
 
     failed = 0
-    POSTED_DIR.mkdir(exist_ok=True)
     for p in batch:
         try:
             publish_story(p)
-            stamp = datetime.now(WIB).strftime("%Y%m%d-%H%M")
-            p.rename(POSTED_DIR / f"{stamp}-{p.name}")
+            stamp = datetime.now(WIB).strftime("%Y-%m-%d %H:%M WIB")
+            p.unlink()
+            print(f"[{stamp}] sudah tayang dan dihapus dari repo: {p.name}")
         except Exception as e:  # noqa: BLE001
             failed += 1
             print(f"GAGAL untuk {p.name}: {mask(str(e))}", file=sys.stderr)
