@@ -1,0 +1,53 @@
+name: Tayangkan story Instagram
+
+on:
+  schedule:
+    # Lima kali sehari, tiap hari. Tiap jalan menayangkan 1 story (file tertua di queue/).
+    # Jam WIB -> UTC: 07.00 -> 00.00 | 10.00 -> 03.00 | 13.00 -> 06.00 | 17.00 -> 10.00 | 20.00 -> 13.00
+    - cron: "0 0 * * *"
+    - cron: "0 3 * * *"
+    - cron: "0 6 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "Jumlah story yang ditayangkan sekarang"
+        default: "1"
+      dry_run:
+        description: "Uji saja, jangan tayang (hilangkan centang untuk tayang sungguhan)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: post-story
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tayangkan story
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          MAX_PER_RUN: ${{ github.event.inputs.count || '1' }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true') && '1' || '' }}
+        run: python scripts/publish_story.py
+
+      - name: Simpan yang sudah tayang
+        if: always()
+        run: |
+          git config user.name "stat-daily-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A queue posted
+          git diff --cached --quiet || (git commit -m "Story sudah tayang" && git push)
