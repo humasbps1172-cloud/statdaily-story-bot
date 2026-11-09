@@ -9,7 +9,7 @@ Gambar yang berhasil tayang dipindah ke posted/.
 
 Variabel lingkungan:
   IG_ACCESS_TOKEN  (wajib kecuali DRY_RUN=1)  token Instagram jangka panjang
-  IG_USER_ID       (opsional)  id akun Instagram; default "me"
+  IG_USER_ID       (wajib)  id akun Instagram (angka)
   MAX_PER_RUN      jumlah story per jalan, default 1
   DRY_RUN          "1" = hanya tampilkan rencana, tidak memanggil API
 """
@@ -23,10 +23,10 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-API_BASE = os.environ.get("IG_API_BASE", "https://graph.instagram.com").rstrip("/")
+API_BASE = os.environ.get("IG_API_BASE", "https://graph.facebook.com").rstrip("/")
 API_VERSION = os.environ.get("IG_API_VERSION", "v26.0")
 TOKEN = os.environ.get("IG_ACCESS_TOKEN", "")
-IG_ID = os.environ.get("IG_USER_ID") or "me"
+IG_ID = os.environ.get("IG_USER_ID", "").strip()
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN") or "1")
 DRY_RUN = os.environ.get("DRY_RUN", "") == "1"
 QUEUE_DIR = Path(os.environ.get("QUEUE_DIR", "queue"))
@@ -120,6 +120,9 @@ def main():
         return 0
     if not TOKEN:
         print("IG_ACCESS_TOKEN belum diatur.", file=sys.stderr)
+        return 2
+    if not IG_ID:
+        print("IG_USER_ID belum diatur.", file=sys.stderr)
         return 2
 
     failed = 0
