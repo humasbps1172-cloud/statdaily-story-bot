@@ -1,4 +1,4 @@
-# Bot story Instagram @stat.daily
+# Bot Instagram @stat.daily (story + carousel)
 
 Menayangkan story dari folder `queue/` ke Instagram lewat Instagram API (API setup with Unified login, host graph.facebook.com).
 
@@ -22,3 +22,12 @@ Catatan: repo publik, jadi gambar di `queue/` bisa dilihat siapa saja sebelum ta
 - Hanya JPG/JPEG yang ditayangkan; file lain dilewati dengan peringatan.
 - Batas API Instagram: 100 postingan via API per 24 jam.
 - GitHub bisa menonaktifkan workflow terjadwal di repo publik yang tidak aktif 60 hari; commit penghapusan file biasanya menjaganya tetap aktif.
+
+## Carousel
+Folder `queue_carousel/` berisi satu subfolder per carousel, mis. `queue_carousel/20261112 - Nama Bahasan/`:
+- 2 sampai 10 file JPG/JPEG, urut menurut nomor di nama file (`... - Slide 1.jpg` ... `... - Slide 10.jpg`)
+- `caption.txt` (wajib, maksimal 2.200 karakter dan 30 hashtag, tanpa baris sumber/kredit foto)
+
+Workflow "Tayangkan carousel" berjalan sekali sehari (19:37 WIB) dan menayangkan 1 subfolder tertua (urutan nama, awalan YYYYMMDD). Subfolder yang belum lengkap (tanpa `caption.txt` atau jumlah slide di luar 2-10) dilewati dengan peringatan. Yang sudah tayang dihapus dari `queue_carousel/`.
+Uji: Actions → Tayangkan carousel → Run workflow dengan `dry_run` aktif (menampilkan rencana dan caption), lalu matikan `dry_run` untuk tayang sungguhan.
+Memakai secrets yang sama dengan bot story (`IG_ACCESS_TOKEN`, `IG_USER_ID`).
