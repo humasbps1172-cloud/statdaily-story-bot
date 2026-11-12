@@ -2,9 +2,11 @@ name: Tayangkan carousel Instagram
 
 on:
   schedule:
-    # Sekali sehari. Tiap jalan menayangkan 1 carousel (subfolder tertua di queue_carousel/).
-    # 19.37 WIB -> 12.37 UTC
-    - cron: "37 12 * * *"
+    # Dua kali sehari (data Metricool: puncak engagement IG sekitar 10.00 dan 18.00 WIB).
+    # Dijadwalkan ~45 menit lebih awal karena cron GitHub biasanya telat.
+    # Tiap jalan menayangkan 1 carousel (subfolder tertua di queue_carousel/).
+    # 09.15 WIB -> 02.15 UTC dan 17.15 WIB -> 10.15 UTC
+    - cron: "15 2,10 * * *"
   workflow_dispatch:
     inputs:
       count:
