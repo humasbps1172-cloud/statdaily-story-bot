@@ -23,8 +23,8 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-API_BASE = os.environ.get("IG_API_BASE", "https://graph.facebook.com").rstrip("/")
-API_VERSION = os.environ.get("IG_API_VERSION", "v26.0")
+API_BASE = (os.environ.get("IG_API_BASE") or "https://graph.facebook.com").rstrip("/")
+API_VERSION = (os.environ.get("IG_API_VERSION") or "v26.0")
 TOKEN = os.environ.get("IG_ACCESS_TOKEN", "")
 IG_ID = os.environ.get("IG_USER_ID", "").strip()
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN") or "1")
