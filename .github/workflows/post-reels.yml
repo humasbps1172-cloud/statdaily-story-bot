@@ -2,9 +2,11 @@ name: Tayangkan Reels Instagram
 
 on:
   schedule:
-    # Sekali sehari. Dijadwalkan ~45 menit lebih awal karena cron GitHub biasanya telat.
+    # Dua kali sehari. Dijadwalkan ~45 menit lebih awal karena cron GitHub biasanya telat.
     # Tiap jalan menayangkan 1 Reels (subfolder tertua di queue_reels/).
+    # 11.15 WIB -> 04.15 UTC (target tayang sekitar 12.00 WIB).
     # 19.15 WIB -> 12.15 UTC (target tayang sekitar 20.00 WIB). Ubah jam di sini bila perlu.
+    - cron: "15 4 * * *"
     - cron: "15 12 * * *"
   workflow_dispatch:
     inputs:
