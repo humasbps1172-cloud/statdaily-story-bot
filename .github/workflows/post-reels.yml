@@ -6,7 +6,8 @@ on:
     # Tiap jalan menayangkan 1 Reels (subfolder tertua di queue_reels/).
     # Target tayang 12.00 WIB -> cron 04.10 UTC | 18.30 WIB -> cron 10.40 UTC
     - cron: "10 4 * * *"
-    - cron: "40 10 * * *"
+    # SEMENTARA DILEWATI 18 Nov (sudah ditayangkan manual jam 17.18 WIB); dikembalikan setelah 19.00 WIB:
+    # - cron: "40 10 * * *"
   workflow_dispatch:
     inputs:
       count:
