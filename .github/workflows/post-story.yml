@@ -3,12 +3,13 @@ name: Tayangkan story Instagram
 on:
   schedule:
     # Lima kali sehari, tiap hari. Tiap jalan menayangkan 1 story (file tertua di queue/).
-    # Jam WIB -> UTC (mengikuti jam ramai Instagram): 09.37 -> 02.37 | 10.37 -> 03.37 | 12.07 -> 05.07 | 17.37 -> 10.37 | 18.37 -> 11.37
-    - cron: "37 2 * * *"
-    - cron: "37 3 * * *"
-    - cron: "7 5 * * *"
-    - cron: "37 10 * * *"
-    - cron: "37 11 * * *"
+    # Cron GitHub telat rata-rata ~50 menit (diukur 42 run, rentang 38-60), jadi cron = jam target - 50 menit.
+    # Target tayang WIB -> cron UTC: 08.00 -> 00.10 | 11.00 -> 03.10 | 13.30 -> 05.40 | 17.00 -> 09.10 | 20.00 -> 12.10
+    - cron: "10 0 * * *"
+    - cron: "10 3 * * *"
+    - cron: "40 5 * * *"
+    - cron: "10 9 * * *"
+    - cron: "10 12 * * *"
   workflow_dispatch:
     inputs:
       count:
