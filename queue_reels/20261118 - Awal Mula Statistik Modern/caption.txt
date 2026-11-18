@@ -1,0 +1,17 @@
+Awal mula statistik modern: dari secangkir teh ☕
+
+Awal 1920-an di Rothamsted, Inggris. Ronald Fisher, ahli statistik muda, menyodorkan teh ke Dr. Muriel Bristol, yang menolak: ia hanya mau kalau susu dituang duluan. Fisher bilang itu mustahil dibedakan. Rekan mereka, William Roach, menyeletuk: "Ayo kita uji dia."
+
+📌 Satu cangkir tidak cukup, karena menebak bisa saja kebetulan
+📌 Jadi disiapkan 8 cangkir: 4 susu duluan, 4 teh duluan, urutannya diacak
+📌 Kalau Bristol cuma menebak, peluang benar semuanya hanya 1 banding 70
+📌 Menurut cerita yang diwariskan, ia menebak semuanya dengan benar
+
+Dari obrolan teh inilah lahir cara baru menguji dugaan dan konsep hipotesis nol: anggapan bahwa Bristol tidak punya kemampuan sama sekali. Anggapan itu tidak pernah bisa dibuktikan, hanya bisa ditolak. Fisher menuliskannya di The Design of Experiments (1935), dan gagasan ini jadi fondasi uji hipotesis yang kita pakai sampai sekarang.
+
+💬 Menurut Sobat Dose, kamu tim susu duluan atau teh duluan? Tulis di komentar!
+
+Sumber: R.A. Fisher, The Design of Experiments (1935); Joan Fisher Box (1978). Hasil sore itu tidak sepenuhnya terdokumentasi, jadi dituturkan sebagai cerita yang diwariskan. Ilustrasi Stat Daily
+Stat Daily, your daily stat dose.
+
+#StatDaily #SobatDose #StatistikaModern #SejarahStatistik #HipotesisNol #LadyTastingTea #EdukasiData #LiterasiData
