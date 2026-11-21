@@ -1,0 +1,18 @@
+Kamu terus menabung, tapi hasilnya minus? 🤯
+
+Seorang matematikawan India pernah menulis: 1 + 2 + 3 + 4 dan seterusnya = −1/12. Negatif. Kedengarannya salah, kan? Kalau dijumlah biasa, memang salah.
+
+📌 Bayangkan menabung 1 rupiah hari ini, 2 rupiah besok, 3 rupiah lusa. Hari ke-10 jadi 55 rupiah, hari ke-100 jadi 5.050 rupiah, setahun penuh Rp66.795
+📌 Jumlahnya naik tanpa batas, jadi dijumlah biasa hasilnya tak terhingga, bukan minus
+📌 −1/12 muncul dari cara menjumlah yang berbeda, lewat fungsi zeta Riemann dan metode yang dinamai dari Ramanujan
+📌 Trik ini dipakai fisikawan untuk menghitung efek Kasimir: dua pelat logam yang saling tarik di ruang hampa, dan hasilnya sudah dibuktikan lewat eksperimen
+📌 Ramanujan menuliskan deret ini di surat pertamanya kepada matematikawan Inggris, Hardy, tahun 1913
+
+Tenang, tabunganmu nggak akan jadi minus. Itu bukan penjumlahan biasa, itu nilai yang diberikan oleh sebuah metode. 😄
+
+Menurut Sobat Dose, apa lagi yang kedengarannya salah, tapi ternyata berguna kalau aturannya beda? Tulis di komentar!
+
+Sumber: Surat Ramanujan kepada G. H. Hardy (1913); Casimir (1948); Lamoreaux (1997). Ilustrasi Stat Daily
+Stat Daily, your daily stat dose.
+
+#StatDaily #SobatDose #Ramanujan #Matematika #EfekKasimir #TheManWhoKnewInfinity #EdukasiData #LiterasiData
